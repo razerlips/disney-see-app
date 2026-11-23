@@ -5,6 +5,7 @@
 
 import { sortByCustomOrder, moveInOrder } from "./order.js";
 import { initShows } from "./shows-view.js";
+import { displayName } from "./display-name.js";
 
 const STATUS_LABEL = {
   OPERATING: "運営中",
@@ -169,7 +170,7 @@ function itemHtml(a) {
       <button class="fav" type="button" data-name="${escapeHtml(a.name)}" aria-pressed="${fav}"
         aria-label="お気に入り${fav ? "から外す" : "に追加"}">${fav ? "★" : "☆"}</button>
       <div class="info">
-        <div class="name">${escapeHtml(a.name)}</div>
+        <div class="name">${escapeHtml(displayName(a.name))}</div>
         <div class="area">${escapeHtml(a.area)}</div>
         <div class="status">${statusBadge(a.status)}${dpaBadge(a.dpa)}${singleRiderBadge(a.singleRider)}</div>
         ${hoursHtml(a.hours)}
