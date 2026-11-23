@@ -1,0 +1,28 @@
+{
+  "_説明": "動作確認用のサンプル（ThemeParks.wiki の /live と同じ形）。時間はでたらめです。MOCKDATE はその日の日付に置き換わる",
+  "liveData": [
+    { "id": "mock-believe", "name": "Believe! Sea of Dreams", "entityType": "SHOW", "status": "OPERATING",
+      "showtimes": [{ "type": "Performance Time", "startTime": "MOCKDATET19:15:00+09:00", "endTime": "MOCKDATET19:45:00+09:00" }] },
+    { "id": "mock-duffy", "name": "Duffy and Friends’ Wonderful Friendship", "entityType": "SHOW", "status": "OPERATING",
+      "showtimes": [
+        { "type": "Performance Time", "startTime": "MOCKDATET10:30:00+09:00", "endTime": "MOCKDATET10:55:00+09:00" },
+        { "type": "Performance Time", "startTime": "MOCKDATET13:00:00+09:00", "endTime": "MOCKDATET13:25:00+09:00" },
+        { "type": "Performance Time", "startTime": "MOCKDATET15:30:00+09:00", "endTime": "MOCKDATET15:55:00+09:00" }
+      ] },
+    { "id": "mock-christmas", "name": "Starbright Christmas (Tokyo DisneySea)", "entityType": "SHOW", "status": "OPERATING",
+      "showtimes": [
+        { "type": "Performance Time", "startTime": "MOCKDATET11:00:00+09:00", "endTime": "MOCKDATET11:30:00+09:00" },
+        { "type": "Performance Time", "startTime": "MOCKDATET14:10:00+09:00", "endTime": "MOCKDATET14:40:00+09:00" },
+        { "type": "Performance Time", "startTime": "MOCKDATET16:50:00+09:00", "endTime": "MOCKDATET17:20:00+09:00" }
+      ] },
+    { "id": "mock-sky", "name": "Sky Full of Colors (Tokyo DisneySea)", "entityType": "SHOW", "status": "OPERATING",
+      "showtimes": [{ "type": "Performance Time", "startTime": "MOCKDATET20:30:00+09:00" }] },
+    { "id": "mock-greeting", "name": "Disney Christmas Greeting", "entityType": "SHOW", "status": "OPERATING",
+      "showtimes": [
+        { "type": "Performance Time", "startTime": "MOCKDATET09:45:00+09:00", "endTime": "MOCKDATET10:15:00+09:00" },
+        { "type": "Performance Time", "startTime": "MOCKDATET12:20:00+09:00", "endTime": "MOCKDATET12:50:00+09:00" }
+      ] },
+    { "id": "mock-noshow", "name": "Dance the Globe!", "entityType": "SHOW", "status": "CLOSED", "showtimes": [] },
+    { "id": "mock-ride", "name": "Soaring: Fantastic Flight", "entityType": "ATTRACTION", "status": "OPERATING" }
+  ]
+}

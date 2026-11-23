@@ -1,0 +1,10 @@
+{
+  "_説明": "npm run mock 用の DPA サンプル（ThemeParks.wiki の live と同じ形。価格・状態はでたらめ）",
+  "liveData": [
+    { "id": "s1", "name": "Toy Story Mania!", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 120 }, "PAID_RETURN_TIME": { "state": "AVAILABLE", "returnStart": null, "returnEnd": null, "price": { "amount": 2000, "currency": "JPY" } } } },
+    { "id": "s2", "name": "Soaring: Fantastic Flight", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 140 }, "PAID_RETURN_TIME": { "state": "FINISHED", "returnStart": null, "returnEnd": null, "price": { "amount": 2500, "currency": "JPY" } } } },
+    { "id": "s3", "name": "Peter Pan's Never Land Adventure", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 50 }, "PAID_RETURN_TIME": { "state": "AVAILABLE", "returnStart": null, "returnEnd": null, "price": { "amount": null, "currency": "JPY" } } } },
+    { "id": "s4", "name": "Anna and Elsa's Frozen Journey", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 140 }, "PAID_RETURN_TIME": { "state": "FINISHED", "returnStart": null, "returnEnd": null, "price": { "amount": 2500, "currency": "JPY" } } } },
+    { "id": "s5", "name": "Journey to the Center of the Earth", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 140 }, "PAID_RETURN_TIME": { "state": "AVAILABLE", "returnStart": null, "returnEnd": null, "price": { "amount": 2000, "currency": "JPY" } } } }
+  ]
+}

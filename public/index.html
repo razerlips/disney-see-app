@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>シー ショー＆待ち時間</title>
+  <!-- ホーム画面に追加したときのアイコンと、アプリっぽい全画面表示の設定 -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="シーのショー">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12151c" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🌋 シー ショー＆待ち時間</h1>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-view="shows" aria-selected="true">🎭 ショー</button>
+      <button role="tab" data-view="waits" aria-selected="false">🎢 待ち時間</button>
+    </nav>
+  </header>
+
+  <!-- ショー時間（東京ディズニーシーの今日の分） -->
+  <main id="view-shows" data-view="shows">
+    <section class="next" id="next" aria-live="polite"></section>
+
+    <div class="entry-bar">
+      <button id="entry-open" type="button" class="primary">✏️ ショー時間を入力</button>
+      <a id="official-link" href="https://www.tokyodisneyresort.jp/tds/show.html" target="_blank" rel="noopener">公式の今日のスケジュール ↗</a>
+    </div>
+
+    <div class="toolbar">
+      <span id="shows-updated" class="muted"></span>
+      <div class="seg" role="group" aria-label="表示のしかた">
+        <button type="button" data-mode="time" aria-pressed="true">時間順</button>
+        <button type="button" data-mode="show" aria-pressed="false">ショー別</button>
+      </div>
+      <label class="fav-filter"><input type="checkbox" id="showPast"> 終わった回</label>
+      <label class="fav-filter"><input type="checkbox" id="showFavOnly"> ★だけ</label>
+      <button id="shows-reload" type="button">更新</button>
+    </div>
+
+    <p id="shows-message" class="message" hidden></p>
+    <ul id="shows" class="list shows"></ul>
+    <p class="muted hint">📱 はこのスマホで入力した時間、🖊️ は data/show-times.json に登録した時間、🔄 は ThemeParks.wiki から自動で取った時間です。抽選・中止・時間変更もあるので、最終確認は公式アプリで。</p>
+
+    <!-- ショー時間の入力（このブラウザに保存。ほかのスマホには引き継がれない） -->
+    <dialog id="entry" aria-labelledby="entry-title">
+      <form id="entry-form" method="dialog">
+        <h2 id="entry-title">✏️ <span id="entry-date"></span> のショー時間</h2>
+        <p class="muted">公式アプリ・公式サイトで見た時間を入れてください。このスマホに保存されます。</p>
+        <label>ショー
+          <select id="entry-show"></select>
+        </label>
+        <label id="entry-name-wrap" hidden>ショーの名前
+          <input id="entry-name" type="text" autocomplete="off" placeholder="例：ディズニー・クリスマス・グリーティング">
+        </label>
+        <label>時間（スペースか読点で区切る）
+          <input id="entry-times" type="text" inputmode="numeric" autocomplete="off" placeholder="例：10:30 13:00 15:30-15:55">
+        </label>
+        <label>場所（なくても OK）
+          <input id="entry-area" type="text" autocomplete="off" placeholder="例：メディテレーニアンハーバー">
+        </label>
+        <p id="entry-error" class="entry-error" role="alert" hidden></p>
+        <div class="entry-actions">
+          <button type="button" id="entry-close">閉じる</button>
+          <button type="submit" id="entry-save" class="primary">保存</button>
+        </div>
+        <ul id="entry-list" class="entry-list"></ul>
+      </form>
+    </dialog>
+  </main>
+
+  <main id="view-waits" data-view="waits" hidden>
+    <div class="toolbar" id="toolbar-rides">
+      <span id="updated" class="muted"></span>
+      <select id="sort" aria-label="並び替え">
+        <option value="wait">待ち時間が短い順</option>
+        <option value="area">エリア順</option>
+        <option value="name">名前順</option>
+        <option value="custom">カスタム順</option>
+      </select>
+      <label class="fav-filter"><input type="checkbox" id="favOnly"> ★だけ</label>
+      <button id="reload" type="button">更新</button>
+    </div>
+
+    <p class="muted hint">カードを長押しして上下に動かすと、好きな順番に並べられます（カスタム順）</p>
+
+    <!-- 自分用メモ（待ち時間カードとは別枠） -->
+    <aside id="memo-sea" class="memo">
+      <p class="memo-title">📝 お店メモ</p>
+      <p>スリーピーホエール・ショップ（クジラの口の中のお店）に寄る。入店のスタンバイパスを東京ディズニーリゾート公式アプリで確認。</p>
+      <a href="https://www.tokyodisneyresort.jp/tds/shop/detail/633/" target="_blank" rel="noopener">公式ページを開く ↗</a>
+    </aside>
+
+    <p id="message" class="message" hidden></p>
+    <ul id="list" class="list"></ul>
+  </main>
+
+  <footer class="muted">
+    データ提供（Powered by）：<a id="source" href="#" target="_blank" rel="noopener"></a>
+    ／ 非公式データのため、正確な情報は公式アプリで確認してください
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "_説明": "npm run mock 用の DPA サンプル（ThemeParks.wiki の live と同じ形。価格・状態はでたらめ）",
+  "liveData": [
+    { "id": "m1", "name": "Enchanted Tale of Beauty and the Beast", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 80 }, "PAID_RETURN_TIME": { "state": "AVAILABLE", "returnStart": null, "returnEnd": null, "price": { "amount": 2500, "currency": "JPY" } } } },
+    { "id": "m2", "name": "Pooh's Hunny Hunt", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 50 }, "PAID_RETURN_TIME": { "state": "AVAILABLE", "returnStart": null, "returnEnd": null, "price": { "amount": null, "currency": "JPY" } } } },
+    { "id": "m3", "name": "Haunted Mansion “Holiday Nightmare”", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 40 }, "PAID_RETURN_TIME": { "state": "FINISHED", "returnStart": null, "returnEnd": null, "price": { "amount": 1500, "currency": "JPY" } } } },
+    { "id": "m4", "name": "Splash Mountain", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 40 }, "PAID_RETURN_TIME": { "state": "AVAILABLE", "returnStart": null, "returnEnd": null, "price": { "amount": 1500, "currency": "JPY" } } } },
+    { "id": "m5", "name": "Space Mountain", "entityType": "ATTRACTION", "queue": { "STANDBY": { "waitTime": 70 } } }
+  ]
+}

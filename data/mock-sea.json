@@ -1,0 +1,82 @@
+[
+  {
+    "id": "mock-13",
+    "name": "ソアリン：ファンタスティック・フライト",
+    "area": "メディテレーニアンハーバー",
+    "status": "OPERATING",
+    "waitTime": 100,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-14",
+    "name": "タワー・オブ・テラー",
+    "area": "アメリカンウォーターフロント",
+    "status": "OPERATING",
+    "waitTime": 55,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-15",
+    "name": "トイ・ストーリー・マニア！",
+    "area": "アメリカンウォーターフロント",
+    "status": "OPERATING",
+    "waitTime": 80,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-16",
+    "name": "インディ・ジョーンズ・アドベンチャー：クリスタルスカルの魔宮",
+    "area": "ロストリバーデルタ",
+    "status": "OPERATING",
+    "waitTime": 40,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-17",
+    "name": "レイジングスピリッツ",
+    "area": "ロストリバーデルタ",
+    "status": "DOWN",
+    "waitTime": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-18",
+    "name": "センター・オブ・ジ・アース",
+    "area": "ミステリアスアイランド",
+    "status": "OPERATING",
+    "waitTime": 65,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-19",
+    "name": "海底2万マイル",
+    "area": "ミステリアスアイランド",
+    "status": "OPERATING",
+    "waitTime": 25,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-20",
+    "name": "アナとエルサのフローズンジャーニー",
+    "area": "ファンタジースプリングス",
+    "status": "OPERATING",
+    "waitTime": 120,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-21",
+    "name": "ピーターパンのネバーランドアドベンチャー",
+    "area": "ファンタジースプリングス",
+    "status": "OPERATING",
+    "waitTime": 75,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-22",
+    "name": "ラプンツェルのランタンフェスティバル",
+    "area": "ファンタジースプリングス",
+    "status": "CLOSED",
+    "waitTime": null,
+    "updatedAt": null
+  }
+]

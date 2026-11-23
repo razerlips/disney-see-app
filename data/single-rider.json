@@ -1,0 +1,12 @@
+{
+  "_説明": "シングルライダー対象のアトラクション（2026-01-19 の対象追加後。公式 FAQ・報道で確認）。日によって・混雑によって実施しないこともある。name はアプリの表示名（英語名でも可）。除外リストの施設はここに書いても一覧には出ない。",
+  "land": [
+    { "name": "美女と野獣“魔法のものがたり”", "en": "Enchanted Tale of Beauty and the Beast" }
+  ],
+  "sea": [
+    { "name": "アナとエルサのフローズンジャーニー", "en": "Anna and Elsa's Frozen Journey" },
+    { "name": "ピーターパンのネバーランドアドベンチャー", "en": "Peter Pan's Never Land Adventure" },
+    { "name": "レイジングスピリッツ", "en": "Raging Spirits" },
+    { "name": "インディ・ジョーンズ・アドベンチャー：クリスタルスカルの魔宮", "en": "Indiana Jones Adventure: Temple of the Crystal Skull" }
+  ]
+}

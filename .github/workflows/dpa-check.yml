@@ -1,0 +1,19 @@
+# DPA（プレミアアクセス）情報が API から取れるかの調査（Actions タブから手動でも実行できる）
+name: DPA check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/check-dpa.mjs
+      - .github/workflows/dpa-check.yml
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-dpa.mjs

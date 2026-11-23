@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1f4b"/>
+      <stop offset="1" stop-color="#4b2a7b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/>
+      <stop offset="1" stop-color="#f2b705"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 夜空 -->
+  <rect width="512" height="512" fill="url(#sky)"/>
+  <g fill="#fff">
+    <circle cx="78" cy="92" r="5" opacity=".9"/>
+    <circle cx="420" cy="70" r="4" opacity=".8"/>
+    <circle cx="452" cy="170" r="3" opacity=".7"/>
+    <circle cx="120" cy="190" r="3" opacity=".6"/>
+    <path d="M370 118l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" opacity=".95"/>
+  </g>
+
+  <!-- お城のシルエット -->
+  <g fill="url(#gold)">
+    <!-- 中央の塔 -->
+    <rect x="226" y="150" width="60" height="150"/>
+    <path d="M220 152 L256 74 L292 152 Z"/>
+    <rect x="253" y="52" width="6" height="26"/>
+    <path d="M259 52 h22 l-6 7 l6 7 h-22 z"/>
+    <!-- 左右の塔 -->
+    <rect x="150" y="210" width="44" height="110"/>
+    <path d="M144 212 L172 152 L200 212 Z"/>
+    <rect x="318" y="210" width="44" height="110"/>
+    <path d="M312 212 L340 152 L368 212 Z"/>
+    <!-- 端の小さな塔 -->
+    <rect x="104" y="262" width="34" height="90"/>
+    <path d="M99 264 L121 222 L143 264 Z"/>
+    <rect x="374" y="262" width="34" height="90"/>
+    <path d="M369 264 L391 222 L413 264 Z"/>
+    <!-- 城壁 -->
+    <rect x="96" y="300" width="320" height="92"/>
+  </g>
+  <!-- 門 -->
+  <path d="M232 392 v-44 a24 24 0 0 1 48 0 v44 z" fill="#2c2160"/>
+
+  <!-- 地面 -->
+  <rect y="392" width="512" height="120" fill="#20184a"/>
+
+  <!-- 時計（待ち時間） -->
+  <g transform="translate(386 404)">
+    <circle r="78" fill="#fff"/>
+    <circle r="78" fill="none" stroke="#2f9e44" stroke-width="14"/>
+    <path d="M0 -44 V0 L30 20" fill="none" stroke="#1b1f4b" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle r="8" fill="#1b1f4b"/>
+  </g>
+</svg>

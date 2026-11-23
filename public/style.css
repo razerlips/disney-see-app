@@ -1,0 +1,267 @@
+:root {
+  --bg: #f6f7fb;
+  --card: #fff;
+  --text: #1d2433;
+  --muted: #6b7280;
+  --accent: #3b5bdb;
+  --short: #2f9e44;
+  --mid: #f08c00;
+  --long: #e03131;
+  --border: #e3e6ee;
+  --memo-bg: #fff8e1;
+  --memo-border: #f2b705;
+  --tab-on: #eef1fd;
+  --dpa: #7048e8;
+  --sr: #0b7285;
+  --sr-bg: #e3f8fb;
+  --st-open: #1f7a33;
+  --st-open-bg: #e3f6e7;
+  --st-down: #b35c00;
+  --st-down-bg: #fff0d9;
+  --st-off: #5b6472;
+  --st-off-bg: #eceef3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12151c;
+    --card: #1c212b;
+    --text: #e8eaf0;
+    --muted: #9aa3b2;
+    --accent: #7c96ff;
+    --border: #2b3240;
+    --memo-bg: #2a2614;
+    --memo-border: #c99a06;
+    --tab-on: #1c2338;
+    --dpa: #b197fc;
+    --sr: #66d9e8;
+    --sr-bg: #0e3a42;
+    --st-open: #69db7c;
+    --st-open-bg: #173323;
+    --st-down: #ffb454;
+    --st-down-bg: #3a2a12;
+    --st-off: #b4bcc9;
+    --st-off-bg: #2a303b;
+  }
+}
+
+* { box-sizing: border-box; }
+/* hidden 属性を付けた要素は、display の指定より優先して必ず隠す */
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header, main, footer { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+/* ホーム画面から全画面で開いたとき、iPhone のノッチやホームバーに文字が重ならないようにする */
+header { padding-top: env(safe-area-inset-top); }
+footer { padding-bottom: env(safe-area-inset-bottom); }
+h1 { font-size: 1.25rem; margin: 16px 0 12px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: var(--accent); }
+.muted { color: var(--muted); font-size: 0.85rem; }
+
+/* タブ（ランド／シー） */
+.tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; border-bottom: 1px solid var(--border); }
+.tabs button {
+  min-height: 44px; padding: 8px 4px; border: 0; background: none; font: inherit; font-weight: 700;
+  border-bottom: 3px solid transparent; color: var(--muted);
+}
+.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); background: var(--tab-on); }
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+.toolbar #updated { margin-right: auto; }
+.toolbar button, .toolbar select {
+  font: inherit; padding: 6px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card); color: var(--text);
+}
+
+.memo {
+  margin: 0 0 12px; padding: 12px 14px; border-radius: 10px;
+  background: var(--memo-bg); border: 1px solid var(--memo-border); border-left-width: 5px;
+}
+.memo p { margin: 0 0 6px; line-height: 1.5; }
+.memo .memo-title { font-weight: 700; }
+.memo a { font-weight: 600; }
+
+.message { padding: 12px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); }
+.message.error { border-color: var(--long); }
+
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--border);
+}
+.item .info { flex: 1; min-width: 0; }
+.item .name { font-weight: 600; overflow-wrap: anywhere; }
+.item .area { color: var(--muted); font-size: 0.8rem; }
+.item .wait { text-align: right; min-width: 64px; }
+.item .wait strong { font-size: 1.4rem; }
+.item .status { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-top: 5px; }
+/* 運営状況バッジ：色つきの丸いラベルで、ぱっと見て分かるように */
+.st {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px;
+  font-size: 0.82rem; line-height: 1.5; font-weight: 700; white-space: nowrap;
+}
+.st-mark { font-size: 0.6rem; }
+.st.open { color: var(--st-open); background: var(--st-open-bg); }
+.st.down { color: var(--st-down); background: var(--st-down-bg); }
+.st.off { color: var(--st-off); background: var(--st-off-bg); }
+/* 運営していない施設は名前などを薄くする（状況バッジは薄くしない） */
+.item.closed .name, .item.closed .area, .item.closed .hours, .item.closed .wait { opacity: 0.6; }
+/* 長押しで並び替え：押している間は少し沈み、持ち上げると浮いて影が付く */
+.item {
+  position: relative; transition: transform 0.18s ease, box-shadow 0.18s ease;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+.item.pressing { transform: scale(0.98); transition-duration: 0.4s; }
+.item.dragging {
+  z-index: 10; transition: none; cursor: grabbing; opacity: 1;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28); border-color: var(--accent);
+}
+body.reordering { cursor: grabbing; }
+.hint { margin: -4px 0 10px; font-size: 0.75rem; }
+/* DPA バッジ：運営状況の横に小さく（待ち時間より目立たせない） */
+.dpa {
+  display: inline-block; padding: 0 6px; border-radius: 999px;
+  font-size: 0.7rem; line-height: 1.5; font-weight: 600; white-space: nowrap;
+  border: 1px solid currentColor;
+}
+.dpa.selling { color: var(--dpa); }
+.dpa.finished { color: var(--muted); }
+/* シングルライダー：DPA（紫の枠線）と区別できるティールの塗りピル */
+.sr {
+  display: inline-flex; align-items: center; gap: 3px; padding: 0 7px; border-radius: 999px;
+  font-size: 0.7rem; line-height: 1.6; font-weight: 700; white-space: nowrap;
+  color: var(--sr); background: var(--sr-bg);
+}
+.sr-ico { width: 1em; height: 1em; }
+/* 運営予定時間：待ち時間・DPA より控えめ。通常と違う時間だけ色を付けて見落とさないように */
+.item .hours { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
+.item .hours.differs { color: var(--mid); font-weight: 700; }
+.wait.short strong { color: var(--short); }
+.wait.mid strong { color: var(--mid); }
+.wait.long strong { color: var(--long); }
+
+.fav {
+  border: 0; background: none; font-size: 1.4rem; line-height: 1; padding: 4px;
+  color: var(--muted);
+}
+.fav[aria-pressed="true"] { color: #f2b705; }
+.fav-filter { display: flex; align-items: center; gap: 4px; font-size: 0.9rem; }
+
+
+footer { margin: 24px auto; }
+
+/* ---- ショー ------------------------------------------------------------------ */
+:root {
+  --show: #0b6bcb;        /* シーの海の青 */
+  --show-bg: #e7f1fc;
+  --show-ink: #0a3f78;
+  --soon: #c2255c;
+  --soon-bg: #fdeaf1;
+  --gold: #b7791f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --show: #6cb4ff;
+    --show-bg: #12263d;
+    --show-ink: #cfe6ff;
+    --soon: #ff8fb7;
+    --soon-bg: #3a1424;
+    --gold: #f2c46d;
+  }
+}
+
+/* 次のショー：いちばん目立つカード */
+.next {
+  margin: 14px 0 4px; padding: 14px 16px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--show-bg), var(--card));
+  border: 1px solid var(--show); color: var(--text);
+}
+.next-label { margin: 0 0 6px; font-size: 0.78rem; font-weight: 700; color: var(--show); letter-spacing: 0.04em; }
+.next-none { margin: 0; }
+.next-main { display: flex; align-items: center; gap: 14px; }
+.next-time { font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--show-ink); font-variant-numeric: tabular-nums; }
+.next-info { min-width: 0; display: grid; gap: 3px; }
+.next-name { font-weight: 700; font-size: 1.05rem; overflow-wrap: anywhere; }
+.next-rest { list-style: none; margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--border); display: grid; gap: 6px; }
+.next-rest li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+.next-rest .t { font-weight: 700; min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.next-rest .n { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+
+/* 表示切り替え（時間順／ショー別） */
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.toolbar .seg button { border: 0; border-radius: 0; padding: 6px 10px; background: var(--card); }
+.toolbar .seg button[aria-pressed="true"] { background: var(--show); color: #fff; font-weight: 700; }
+#shows-updated { margin-right: auto; }
+
+/* あと何分・上演中などのラベル */
+.when {
+  display: inline-block; padding: 2px 9px; border-radius: 999px; white-space: nowrap;
+  font-size: 0.8rem; font-weight: 700; color: var(--show); background: var(--show-bg);
+}
+.when.soon { color: var(--soon); background: var(--soon-bg); }
+.when.ongoing { color: var(--st-open); background: var(--st-open-bg); }
+.when.past { color: var(--st-off); background: var(--st-off-bg); font-weight: 600; }
+
+/* 時間順の 1 行 */
+.shows .item { -webkit-user-select: auto; user-select: auto; }
+.slot { align-items: flex-start; }
+.slot-time {
+  min-width: 3.4em; text-align: center; font-weight: 800; font-size: 1.35rem; line-height: 1.15;
+  font-variant-numeric: tabular-nums; color: var(--show-ink);
+}
+.slot-time small { display: block; font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+.slot.past { opacity: 0.55; }
+.slot.ongoing { border-color: var(--st-open); }
+.item .note { font-size: 0.75rem; color: var(--gold); margin-top: 2px; }
+.src { font-size: 0.75rem; }
+.now-line { display: flex; align-items: center; gap: 8px; color: var(--soon); font-size: 0.78rem; font-weight: 700; }
+.now-line::before, .now-line::after { content: ""; flex: 1; height: 2px; background: var(--soon); border-radius: 2px; }
+.past-note { text-align: center; font-size: 0.75rem; }
+
+/* ショー別のカード */
+.show-card { align-items: flex-start; }
+.show-card.past { opacity: 0.55; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip {
+  padding: 3px 9px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  border: 1px solid var(--border); background: var(--bg);
+}
+.chip.past { color: var(--muted); text-decoration: line-through; font-weight: 500; }
+.chip.ongoing { border-color: var(--st-open); color: var(--st-open); }
+.chip.is-next { background: var(--show); border-color: var(--show); color: #fff; }
+.chip-next { margin-top: 6px; }
+.message.empty p { margin: 0 0 6px; }
+code { font-size: 0.85em; padding: 0 4px; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); }
+#view-shows > .hint { margin-top: 14px; }
+
+/* ショー時間の入力 */
+.entry-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 10px 0 0; }
+.entry-bar a { font-size: 0.85rem; font-weight: 600; }
+button.primary {
+  padding: 8px 14px; border-radius: 10px; border: 0; background: var(--show); color: #fff; font-weight: 700;
+}
+#entry {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); padding: 18px 16px;
+  border: 1px solid var(--border); border-radius: 14px; background: var(--card); color: var(--text);
+}
+#entry::backdrop { background: rgba(10, 20, 40, 0.45); }
+#entry h2 { margin: 0 0 4px; font-size: 1.1rem; }
+#entry label { display: grid; gap: 4px; margin: 12px 0 0; font-size: 0.85rem; font-weight: 600; }
+#entry input, #entry select {
+  font: inherit; font-size: 16px; /* iPhone で入力時に画面が拡大されないように */
+  width: 100%; min-width: 0; padding: 9px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);
+}
+#entry-form { min-width: 0; }
+.entry-error { margin: 10px 0 0; color: var(--long); font-weight: 700; font-size: 0.85rem; }
+.entry-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.entry-actions button:not(.primary) { padding: 8px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); }
+.entry-list { list-style: none; margin: 16px 0 0; padding: 12px 0 0; border-top: 1px dashed var(--border); display: grid; gap: 6px; }
+.entry-list li { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 8px; }
+.entry-list li.muted { display: block; }
+.entry-list .link { border: 0; background: none; padding: 0; color: var(--accent); font-weight: 700; text-align: left; }
+.entry-list li > span { grid-column: 1; font-size: 0.85rem; }
+.entry-list .del { grid-column: 2; grid-row: 1 / span 2; border: 0; background: none; padding: 6px; font-size: 1.1rem; }

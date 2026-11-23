@@ -1,0 +1,98 @@
+[
+  {
+    "id": "mock-1",
+    "name": "オムニバス",
+    "area": "ワールドバザール",
+    "status": "OPERATING",
+    "waitTime": 5,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-2",
+    "name": "カリブの海賊",
+    "area": "アドベンチャーランド",
+    "status": "OPERATING",
+    "waitTime": 15,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-3",
+    "name": "ジャングルクルーズ：ワイルドライフ・エクスペディション",
+    "area": "アドベンチャーランド",
+    "status": "OPERATING",
+    "waitTime": 30,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-4",
+    "name": "ウエスタンリバー鉄道",
+    "area": "アドベンチャーランド",
+    "status": "DOWN",
+    "waitTime": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-5",
+    "name": "ビッグサンダー・マウンテン",
+    "area": "ウエスタンランド",
+    "status": "OPERATING",
+    "waitTime": 60,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-6",
+    "name": "スプラッシュ・マウンテン",
+    "area": "クリッターカントリー",
+    "status": "OPERATING",
+    "waitTime": 50,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-7",
+    "name": "美女と野獣“魔法のものがたり”",
+    "area": "ファンタジーランド",
+    "status": "OPERATING",
+    "waitTime": 90,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-8",
+    "name": "プーさんのハニーハント",
+    "area": "ファンタジーランド",
+    "status": "OPERATING",
+    "waitTime": 45,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-9",
+    "name": "ホーンテッドマンション",
+    "area": "ファンタジーランド",
+    "status": "OPERATING",
+    "waitTime": 20,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-10",
+    "name": "スペース・マウンテン",
+    "area": "トゥモローランド",
+    "status": "OPERATING",
+    "waitTime": 70,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-11",
+    "name": "バズ・ライトイヤーのアストロブラスター",
+    "area": "トゥモローランド",
+    "status": "REFURBISHMENT",
+    "waitTime": null,
+    "updatedAt": null
+  },
+  {
+    "id": "mock-12",
+    "name": "ロジャーラビットのカートゥーンスピン",
+    "area": "トゥーンタウン",
+    "status": "CLOSED",
+    "waitTime": null,
+    "updatedAt": null
+  }
+]

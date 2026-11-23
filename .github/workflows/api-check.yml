@@ -1,0 +1,45 @@
+# 待ち時間 API の疎通テストと、アプリが実データで動くかの確認
+# （Actions タブの「Run workflow」から手動でも実行できる）
+name: API check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - server.js
+      - sources.js
+      - shows.js
+      - data/show-times.json
+      - names-ja.js
+      - exclusions.js
+      - hours.js
+      - single-rider.js
+      - data/single-rider.json
+      - data/operating-hours.json
+      - scripts/**
+      - .github/workflows/api-check.yml
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 単体テスト
+        run: npm test
+      - name: API 候補の比較
+        run: node scripts/check-apis.mjs
+      - name: アプリを実データで起動（メイン：Queue-Times）
+        run: node scripts/smoke.mjs
+      - name: アプリを実データで起動（予備：ThemeParks.wiki に切り替え）
+        run: node scripts/smoke.mjs
+        env:
+          SKIP_SOURCE: Queue-Times.com
+      - name: 実データの施設 ID 一覧（除外リストの確認用）
+        run: node scripts/list-attractions.mjs
+      - name: 訪問日の運営予定と実データの施設名の対応
+        run: node scripts/check-hours.mjs
+      - name: ショー時間が ThemeParks.wiki に載っているか
+        run: node scripts/check-shows.mjs

@@ -1,0 +1,15 @@
+{
+  "name": "disney-see-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "東京ディズニーシーのショー時間と待ち時間を一目で見る自分用アプリ",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "mock": "MOCK=1 node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
