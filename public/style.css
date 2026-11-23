@@ -8,8 +8,6 @@
   --mid: #f08c00;
   --long: #e03131;
   --border: #e3e6ee;
-  --memo-bg: #fff8e1;
-  --memo-border: #f2b705;
   --tab-on: #eef1fd;
   --dpa: #7048e8;
   --sr: #0b7285;
@@ -29,9 +27,7 @@
     --muted: #9aa3b2;
     --accent: #7c96ff;
     --border: #2b3240;
-    --memo-bg: #2a2614;
-    --memo-border: #c99a06;
-    --tab-on: #1c2338;
+        --tab-on: #1c2338;
     --dpa: #b197fc;
     --sr: #66d9e8;
     --sr-bg: #0e3a42;
@@ -76,14 +72,6 @@ a { color: var(--accent); }
   font: inherit; padding: 6px 10px; border-radius: 8px;
   border: 1px solid var(--border); background: var(--card); color: var(--text);
 }
-
-.memo {
-  margin: 0 0 12px; padding: 12px 14px; border-radius: 10px;
-  background: var(--memo-bg); border: 1px solid var(--memo-border); border-left-width: 5px;
-}
-.memo p { margin: 0 0 6px; line-height: 1.5; }
-.memo .memo-title { font-weight: 700; }
-.memo a { font-weight: 600; }
 
 .message { padding: 12px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); }
 .message.error { border-color: var(--long); }
