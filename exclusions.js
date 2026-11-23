@@ -41,7 +41,6 @@ const LIST = {
   sea: [
     { ja: "アクアトピア", en: "Aquatopia", qt: 8038, tpw: "2159960b-4f42-4974-93be-7519816de45d" },
     { ja: "アリエルのプレイグラウンド", en: "Ariel's Playground", qt: 8022, tpw: "a674e149-8ae3-4338-b1e3-c9f6b804f475" },
-    { ja: "インディ・ジョーンズ・アドベンチャー：クリスタルスカルの魔宮", en: "Indiana Jones Adventure: Temple of the Crystal Skull", qt: 8027, tpw: "f66e072d-8bab-48e5-b8cf-6d1947bd291b" },
     { ja: "キャラバンカルーセル", en: "Caravan Carousel", qt: 8040, tpw: "76aed95a-dce8-4d03-8c2a-8ad69b3d0d4a" },
     { ja: "ジャスミンのフライングカーペット", en: "Jasmine's Flying Carpets", qt: 8025, tpw: "abbf5b3e-94e5-420a-8257-34594cd9d590" },
     { ja: "ジャンピン・ジェリーフィッシュ", en: "Jumpin' Jellyfish", qt: 8043, tpw: "c6c0d34d-531a-40d9-b711-3497fd53c28b" },

@@ -4,9 +4,9 @@ import { EXCLUDED, isExcluded, removeExcluded } from "../exclusions.js";
 
 const a = (id, nameEn, name, status = "OPERATING") => ({ id, nameEn, name, status });
 
-test("除外リストの件数（ランド 24・シー 22）", () => {
+test("除外リストの件数（ランド 24・シー 21）", () => {
   assert.equal(EXCLUDED.land.length, 24);
-  assert.equal(EXCLUDED.sea.length, 22);
+  assert.equal(EXCLUDED.sea.length, 21);
 });
 
 test("ID で除外できる（Queue-Times と ThemeParks.wiki の両方）", () => {
@@ -17,9 +17,14 @@ test("ID で除外できる（Queue-Times と ThemeParks.wiki の両方）", () 
 
 test("ID が違っても名前の表記揺れを吸収して除外できる", () => {
   assert.ok(isExcluded("land", a("qt-1", "The Enchanted Tiki Room: Stitch Presents “Aloha E Komo Mai!”", "")));
-  assert.ok(isExcluded("sea", a("qt-1", "Indiana Jones Adventure®: Temple of the Crystal Skull", "")));
+  assert.ok(isExcluded("sea", a("qt-1", "Jasmine’s Flying Carpets", ""))); // 引用符の違い
   assert.ok(isExcluded("land", a("mock-1", "", "グーフィーのペイント&プレイハウス"))); // 半角 &
   assert.ok(isExcluded("land", a("mock-2", "", "スティッチ エンカウンター"))); // 中黒なし
+});
+
+test("インディ・ジョーンズは一覧に出す（11 月下旬の再開に合わせて除外リストから外した）", () => {
+  assert.ok(!isExcluded("sea", a("qt-8027", "Indiana Jones Adventure®: Temple of the Crystal Skull", "")));
+  assert.ok(!isExcluded("sea", a("tpw-f66e072d-8bab-48e5-b8cf-6d1947bd291b", "x", "インディ・ジョーンズ・アドベンチャー：クリスタルスカルの魔宮")));
 });
 
 test("似た名前の別施設は除外しない", () => {
