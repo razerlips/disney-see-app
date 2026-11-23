@@ -45,10 +45,7 @@ const LIST = {
     { ja: "ジャスミンのフライングカーペット", en: "Jasmine's Flying Carpets", qt: 8025, tpw: "abbf5b3e-94e5-420a-8257-34594cd9d590" },
     { ja: "ジャンピン・ジェリーフィッシュ", en: "Jumpin' Jellyfish", qt: 8043, tpw: "c6c0d34d-531a-40d9-b711-3497fd53c28b" },
     { ja: "スカットルのスクーター", en: "Scuttle's Scooters", qt: 8042, tpw: "58815e8e-7c01-4a42-8a00-1bd1c82a0252" },
-    // メディテレーニアンハーバー乗り場だけ。アメリカンウォーターフロント／ロストリバーデルタ乗り場は除外しない
-    { ja: "ディズニーシー・トランジットスチーマーライン（メディテレーニアンハーバー）", en: "DisneySea Transit Steamer Line (Mediterranean Harbor)", qt: 8031, tpw: "7afc3143-befb-4a61-9c86-8d6869eb2ce3" },
     { ja: "タワー・オブ・テラー", en: "Tower of Terror", qt: 8047, tpw: "4ca7254c-7abc-4e52-82e0-9c562c096494" },
-    { ja: "ニモ＆フレンズ・シーライダー", en: "Nemo & Friends SeaRider", qt: 8051, tpw: "179e4e82-26ed-4b04-bf21-f03808b61df4" },
     { ja: "ビッグシティ・ヴィークル", en: "Big City Vehicles", qt: 8037, tpw: "5449e9da-ee4c-47d8-a60a-8a964b94c32d" },
     // フォートレス・エクスプロレーションだけ。中の「ザ・レオナルドチャレンジ」は別施設なので除外しない
     { ja: "フォートレス・エクスプロレーション", en: "Fortress Explorations", qt: 8048, tpw: "6e44f5c0-f996-45ad-aa7e-9738df6a6047" },
@@ -70,8 +67,6 @@ const LIST = {
       qt: 8049,
       tpw: "44df35ec-28cb-4465-9ae1-95a4d6445a82",
     },
-    // 2026-10-14 追加
-    { ja: "ヴェネツィアン・ゴンドラ", en: "Venetian Gondolas", qt: 8034, tpw: "2ca8f848-b8e2-4ba5-aa6e-e0fb37e85d0b" },
   ],
 };
 

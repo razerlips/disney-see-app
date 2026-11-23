@@ -4,9 +4,9 @@ import { EXCLUDED, isExcluded, removeExcluded } from "../exclusions.js";
 
 const a = (id, nameEn, name, status = "OPERATING") => ({ id, nameEn, name, status });
 
-test("除外リストの件数（ランド 24・シー 21）", () => {
+test("除外リストの件数（ランド 24・シー 18）", () => {
   assert.equal(EXCLUDED.land.length, 24);
-  assert.equal(EXCLUDED.sea.length, 21);
+  assert.equal(EXCLUDED.sea.length, 18);
 });
 
 test("ID で除外できる（Queue-Times と ThemeParks.wiki の両方）", () => {
@@ -86,11 +86,14 @@ test("ランドの除外リストはシーに影響しない", () => {
   assert.equal(isExcluded("sea", a("qt-8007", "Alice's Tea Party", "アリスのティーパーティー")), false);
 });
 
-test("シーのヴェネツィアン・ゴンドラを除外する（ID・英語名・日本語名のどれでも）", () => {
-  const a = (id, name, nameEn) => ({ id, name, nameEn });
-  assert.ok(isExcluded("sea", a("qt-8034", "x", "x")));
-  assert.ok(isExcluded("sea", a("tpw-2ca8f848-b8e2-4ba5-aa6e-e0fb37e85d0b", "x", "x")));
-  assert.ok(isExcluded("sea", a("mock", "ヴェネツィアン・ゴンドラ", undefined)));
-  assert.ok(isExcluded("sea", a("mock", "x", "Venetian Gondolas")));
-  assert.ok(!isExcluded("land", a("qt-8034", "ヴェネツィアン・ゴンドラ", "Venetian Gondolas"))); // ランドの除外リストとは別
+test("2026-11-24 に一覧へ戻した 3 施設は除外しない（ID・英語名・日本語名のどれでも）", () => {
+  const back = [
+    a("qt-8031", "DisneySea Transit Steamer Line (Mediterranean Harbor)", "ディズニーシー・トランジットスチーマーライン（メディテレーニアンハーバー）"),
+    a("tpw-7afc3143-befb-4a61-9c86-8d6869eb2ce3", "x", "x"),
+    a("qt-8051", "Nemo & Friends SeaRider", "ニモ＆フレンズ・シーライダー"),
+    a("tpw-179e4e82-26ed-4b04-bf21-f03808b61df4", "x", "x"),
+    a("qt-8034", "Venetian Gondolas", "ヴェネツィアン・ゴンドラ"),
+    a("tpw-2ca8f848-b8e2-4ba5-aa6e-e0fb37e85d0b", "x", "x"),
+  ];
+  for (const x of back) assert.equal(isExcluded("sea", x), false, x.name);
 });
